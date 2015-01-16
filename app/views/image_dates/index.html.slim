@@ -1,0 +1,19 @@
+h1
+  | Даты пользователя #{current_user.email}
+table.table.table-striped
+    thead
+      tr
+        th Дата
+        th Изображение
+        th colspan="3"
+    tbody
+      - @image_dates.each do |image_date|
+        tr
+          td= image_date.date
+          td= image_tag(image_date.image, :height =>50, :width => 50)
+          td= link_to 'Показать', image_date
+          td= link_to 'Изменить', edit_image_date_path(image_date)
+          td= link_to 'Удалить', image_date, method: :delete
+br
+  = link_to 'Добавить новое изображение', new_image_date_path
+

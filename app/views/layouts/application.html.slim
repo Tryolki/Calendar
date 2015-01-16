@@ -1,0 +1,13 @@
+html
+head
+title Calendar
+= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+= javascript_include_tag 'application', 'data-turbolinks-track' => true
+= csrf_meta_tags
+body
+= render 'layouts/header'
+#New_user_image  style=("display: none") = new_image_date_path
+#Search_user  style=("display: none") = search_profiles_path
+p.notice= notice
+p.alert= alert
+= yield

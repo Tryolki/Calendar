@@ -1,0 +1,9 @@
+<% if @user_id == current_user.id%>
+<h1>Editing image_date</h1>
+
+<%= render 'form' %>
+<% else %>
+    <h4>У вас нет прав для изменения этого изображения</h4>
+<% end %>
+<%= link_to 'Show', @image_date %> |
+<%= link_to 'Back', image_dates_path %>

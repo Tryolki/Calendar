@@ -1,0 +1,31 @@
+<h1>Случайное изображение на <%=  @date %></h1>
+<div class="img_in_main_page">
+  <% @img.each do |img| %>
+      <%= image_tag(img.image , :heigth => 300, :width => 300) %>
+  <%end%>
+</div>
+<h1>Все пользователи ресурса</h1>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Имя пользователя</th>
+    <th>Email пользователя</th>
+    <th>Ссылка на профиль</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @users.each do |user| %>
+      <tr>
+        <%if user.id != current_user.id %>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= link_to 'Просмотреть профиль пользователя', profile_path(user.id)%></td>
+
+            </tr>
+        <%end%>
+  <% end %>
+  </tbody>
+</table>

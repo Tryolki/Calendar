@@ -1,0 +1,11 @@
+//= require jquery
+//= require jquery_ujs
+//= require jquery-ui/datepicker
+//= require bootstrap
+//= require add_comment_to_comment
+//= require datapicker_for_calendar.js
+//= require add_new_image_to_gallery_of_date.js
+//= require send_date
+//= require html5.image.preview
+//= require slider
+//= require_tree .

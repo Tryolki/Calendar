@@ -1,0 +1,20 @@
+<%= form_for(@image_date) do |f| %>
+    <div class="field">
+      <h3>Выберите изображение </h3>
+      <p><%=f.file_field :image, :onchange => "previewImage(this,[256],4);"%></p>
+      <p><h2>Превью</h2></p>
+      <div class='imagePreview'></div>
+    </div>
+    <br>
+    <div class="field">
+      <h3>Выбранная дата</h3>
+      <%= f.text_field :date, :value => @date %>
+    </div>
+    <div class="field" style="display: none">
+      <%= f.label :user_id %><br>
+      <%= f.number_field :user_id, :value => current_user.id  %><br>
+    </div>
+    <div class="actions">
+      <br><%= f.submit(:id =>"Save date") %>
+    </div>
+<% end %>

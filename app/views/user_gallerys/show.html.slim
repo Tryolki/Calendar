@@ -1,0 +1,12 @@
+h1
+  | Изображения на #{@date}
+  #w
+    #content
+      #thumbnails
+        ul.clearfix
+          - @image_date_gallery.each do |image_date|
+            li
+              = link_to(image_date) do
+                = image_tag(image_date.image, :height =>150, :width => 150)
+- if (@ch_id == current_user.id.to_s)
+    button#new_img.btn.btn-lg.btn-primary.btn-block onclick="new_image('#{@date}')" Загрузить изображение

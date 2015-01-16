@@ -1,0 +1,59 @@
+nav.navbar.navbar-default role="navigation" 
+  .container-fluid
+
+    .navbar-header
+      button.navbar-toggle.collapsed data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button"
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand href=root_path  Пользователи
+
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      ul.nav.navbar-nav
+        li
+          a href=image_dates_path
+            - if user_signed_in?
+              = current_user.name
+              |  данные календаря
+        li
+
+          - if current_user.instance_of? NilClass
+
+          -else
+              a href=(user_profile_calendar_path)  Календарь
+      - if current_user.instance_of? NilClass
+
+      -else
+       form.navbar-form.navbar-left role="search"
+         .form-group
+           input.form-control placeholder="Поиск пользователей" type="text" id="search_placeholder" /
+         button.btn.btn-default type="button" id="search_button" onclick='search();'  Поиск
+
+      ul.nav.navbar-nav.navbar-right
+        li
+         - if user_signed_in?
+          a href =(user_profile_path) #{current_user.name}
+          li.dropdown
+            a.dropdown-toggle aria-expanded="false" data-toggle="dropdown" href="#" role="button"
+              | Параметры
+              span.caret
+            ul.dropdown-menu role="menu"
+              li
+                = link_to ' Выйти', destroy_user_session_path, :method => :delete
+              li
+                a href =(user_profile_path) Профиль
+              li.divider
+
+         - else
+          li
+            li.dropdown
+              a.dropdown-toggle aria-expanded="false" data-toggle="dropdown" href="#" role="button"
+                | Действия
+                span.caret
+              ul.dropdown-menu role="menu"
+                li
+                  = link_to 'Войти ', new_user_session_path
+                li
+                  = link_to 'Зарегистрироваться', new_user_registration_path
+                li.divider

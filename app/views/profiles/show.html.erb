@@ -1,0 +1,24 @@
+<h1>Профиль пользователя</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-6">
+      <div class="well well-sm">
+        <div class="row">
+          <div class="col-sm-6 col-md-4">
+            <% @user_params_profile.each do |user|%>
+                <%= image_tag(user.image, :heigth =>320, :width => 320)%>
+                </div>
+                <div class="col-sm-6 col-md-8">
+                  <h4>Имя пользователя: <%= user.name%> </h4>
+                  <p>
+                    E-mail: <%=user.email%>
+                    <br />
+                    <a href="<%=(profile_calendar_path(user.id)) %>">Календарь <%= user.name %></a>
+                    <br />
+            <% end %>
+            </div>
+            </div>
+      </div>
+    </div>
+  </div>
+</div>

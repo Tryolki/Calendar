@@ -1,0 +1,2 @@
+module UserGallerysHelper
+end

@@ -1,0 +1,17 @@
+h1 Календарь #{@user_name}
+#Calendar
+    h2#month
+      = link_to "<", date: @date.prev_month
+      = @date.strftime("%B %Y")
+      = link_to ">", date: @date.next_month
+    = calendar @date do |date|
+      = date.day
+      div style=("display: none")
+        | date#{date}date
+      .slider
+        - if @calendar_by_day[date]
+          ul
+            - @calendar_by_day[date].each do |img|
+              li= image_tag (img.image)
+#Show_user_gallery  style=("display: none") = profile_user_gallerys_path(@ch_user_id)
+
