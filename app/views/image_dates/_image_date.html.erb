@@ -25,6 +25,14 @@
                 </div>
               </div>
               <a href="#comment" name="<%=comments.user_name %>">Ответить <%=comments.user_name %></a>
+              Рейтинг комментария( <%= comments.reputation_for(:comm_rep).to_i%> )
+
+              <% if comments.user_id != current_user.id %>
+
+                  <%=link_to "+",comment_vote_image_date_path(comments.id, type: "up"),method: :post %>
+                  |  <%=link_to "-",comment_vote_image_date_path(comments.id, type: "down"),method: :post %>
+
+              <% end %>
               </div>
         </li>
       </ul>

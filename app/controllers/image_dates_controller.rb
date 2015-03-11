@@ -13,6 +13,19 @@ class ImageDatesController < ApplicationController
     @user = User.all
   end
 
+  def comment_vote
+    value = params[:type] == "up" ? 1 : 0
+    @comments = Comment.find(params[:id])
+    @comments.add_or_update_evaluation(:comm_rep, value, current_user)
+    redirect_to :back, notice: "Thank you for voting"
+  end
+  def vote
+    value = params[:type] == "up" ? 1 : 0
+    @image_date = ImageDate.find(params[:id])
+    @image_date.add_or_update_evaluation(:votes, value, current_user)
+    redirect_to :back, notice: "Thank you for voting"
+  end
+
   # GET /image_dates/new
   def new
     @date = params[:date] ? Date.parse(params[:date]) : Date.today

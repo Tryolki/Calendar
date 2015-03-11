@@ -6,5 +6,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :image_dates
 
+  has_many :evaluations, class_name: "RSEvaluation", as: :source
+
+  has_reputation :votes, source: {reputation: :votes, of: :image_dates}, aggregated_by: :sum
+
 
 end

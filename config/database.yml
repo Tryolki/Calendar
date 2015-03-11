@@ -3,17 +3,17 @@ default: &default
   encoding: unicode
   host: localhost
   port: 5432
-  username: TestUser
-  password: test
+  username: postgres
+  password:
   pool: 5
 
 development:
   <<: *default
-  database: Calendar
+  database: Calendar_late
 
 test:
   <<: *default
-  database: Calendar
+  database: Calendar_late
 
 production:
   <<: *default

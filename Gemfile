@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'slim-rails'
 
+gem 'activerecord-reputation-system', require: 'reputation_system'
+
 gem 'carrierwave'
 
 gem 'devise'

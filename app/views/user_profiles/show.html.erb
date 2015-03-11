@@ -18,6 +18,7 @@
                         <a href="<%=edit_user_registration_path%>">Изменить профиль</a>
                         </p>
             <% end %>
+            Мой рейтинг  <%= (current_user.reputation_for(:votes))%>
             </div>
             </div>
       </div>

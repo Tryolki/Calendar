@@ -4,27 +4,20 @@
     <data-source source="LOCAL" name="Rails Calendar: development" uuid="baef0554-7df7-4aa5-a6cc-1b13dc9ff604">
       <driver-ref>postgresql</driver-ref>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/Calendar</jdbc-url>
-      <user-name>TestUser</user-name>
-      <user-password>dfdedfcfdfd9dfde</user-password>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/Calendar_late</jdbc-url>
       <libraries />
     </data-source>
     <data-source source="LOCAL" name="Rails Calendar: test" uuid="8110e63e-1990-484d-8573-84f22bf2dfbf">
       <driver-ref>postgresql</driver-ref>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/Calendar</jdbc-url>
-      <user-name>TestUser</user-name>
-      <user-password>dfdedfcfdfd9dfde</user-password>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/Calendar_late</jdbc-url>
       <libraries />
     </data-source>
     <data-source source="LOCAL" name="Rails Calendar: production" uuid="0b072e9f-e6d3-4faa-95ae-1bad59939218">
       <driver-ref>postgresql</driver-ref>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://127.0.0.1:5432/MicroPost_production</jdbc-url>
-      <user-name>MicroPost</user-name>
-      <user-password>df96df8fdf97df8adfefdfe4dffcdff1df8ddfe7dfe3dfe9dff8dfe5dffadfe5dff9dffedff5dfeedfebdffedfebdfe8dfebdff9dfefdff5dffadfebdff9dff9dffddfe5dff8dfeedf8ddff7df8adf8fdf94</user-password>
       <libraries />
     </data-source>
   </component>
 </project>
-

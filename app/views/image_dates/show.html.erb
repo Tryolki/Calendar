@@ -1,11 +1,17 @@
 <div class="container">
-
   <div class="row">
     <div class="col-lg-12 text-center">
-      <h1><strong>Дата:</strong> <%= @image_date.date %></h1>
+      <h1><strong>Дата:</strong> <%=  @image_date.date %></h1>
       <p class="lead"><strong>Изображение:</strong>
         <%= image_tag(@image_date.image_url)%></p>
+      Рейтинг изображения <%=@image_date.reputation_for(:votes).to_i %>
 
+      <% if @image_date.user_id != current_user.id %>
+
+        <%= link_to "+",vote_image_date_path(@image_date.id,type: "up"),method: :post %>
+        | <%= link_to "-",vote_image_date_path(@image_date.id,type: "down"),method: :post %>
+
+      <% end %>
     </div>
   </div>
 

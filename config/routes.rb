@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
 
 resources :image_dates do
+  member {post :comment_vote}
+  member {post :vote,:comment_vote}
+
   resources :comments
 end
 
