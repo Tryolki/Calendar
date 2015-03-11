@@ -23,7 +23,7 @@
                               data: { confirm: 'Вы уверены' } if current_user.id == @comment.user_id %>
                 </div>
               </div>
-              <a href="#comment" name="<%=comments.user_name %>">Ответить <%=comments.user_name %></a>
+              <a href="#comment" name="<%=@comment.user_name %>">Ответить <%=@comment.user_name %></a>
               </div>
         </li>
       </ul>
