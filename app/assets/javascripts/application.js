@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require jquery-ui/datepicker
 //= require bootstrap
 //= require add_comment_to_comment
@@ -8,4 +9,5 @@
 //= require send_date
 //= require html5.image.preview
 //= require slider
+//= require autoc
 //= require_tree .

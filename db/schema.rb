@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150311202435) do
+ActiveRecord::Schema.define(version: 20150318105156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cities", force: true do |t|
+    t.string   "name"
+    t.integer  "country_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", force: true do |t|
     t.string   "comment"
@@ -26,6 +33,12 @@ ActiveRecord::Schema.define(version: 20150311202435) do
   end
 
   add_index "comments", ["image_date_id"], name: "index_comments_on_image_date_id", using: :btree
+
+  create_table "countries", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "image_dates", force: true do |t|
     t.date     "date"
@@ -97,6 +110,8 @@ ActiveRecord::Schema.define(version: 20150311202435) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.string   "city"
+    t.string   "country"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
