@@ -22,7 +22,7 @@ resources :profiles, only: [:index, :show] do
 end
 
 
-devise_for :users
+devise_for :users, controllers: {registrations: 'registrations'}
 devise_scope :user do
   authenticated :user do
     root :to => 'profiles#index'
