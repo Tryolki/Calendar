@@ -23,8 +23,16 @@
                               method: :delete,remote: true,
                               data: { confirm: 'Вы уверены' } if current_user.id == comments.user_id %>
                 </div>
-              </div>
-              <a href="#comment" name="<%=comments.user_name %>">Ответить <%=comments.user_name %></a>
+                <% unless comments.user_id == current_user.id%>
+                <a href="#comment" name="<%=comments.user_name %>">Ответить <%=comments.user_name %></a>
+                   <% end %>
+                    </div>
+              <% @hash_tag.each do |tag| %>
+                <% if tag.comment_id == comments.id %>
+                  <%= tag.name %>
+                <% end %>
+            <% end %>
+              <br>
               Рейтинг комментария( <%= comments.reputation_for(:comm_rep).to_i%> )
 
               <% if comments.user_id != current_user.id %>

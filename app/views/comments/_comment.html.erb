@@ -23,8 +23,21 @@
                               data: { confirm: 'Вы уверены' } if current_user.id == @comment.user_id %>
                 </div>
               </div>
-              <a href="#comment" name="<%=@comment.user_name %>">Ответить <%=@comment.user_name %></a>
               </div>
+          <% @hash_tag.each do |tag| %>
+              <% if tag.comment_id == @comment.id %>
+                  <%= tag.name %>
+              <% end %>
+          <% end %>
+          <br>
+          Рейтинг комментария( <%= @comment.reputation_for(:comm_rep).to_i%> )
+
+          <% if @comment.user_id != current_user.id %>
+
+              <%=link_to "+",comment_vote_image_date_path(@comment.id, type: "up"),method: :post %>
+              |  <%=link_to "-",comment_vote_image_date_path(@comment.id, type: "down"),method: :post %>
+
+          <% end %>
         </li>
       </ul>
     </div>

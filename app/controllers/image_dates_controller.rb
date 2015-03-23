@@ -9,6 +9,7 @@ class ImageDatesController < ApplicationController
 
 
   def show
+    @hash_tag = Tag.all
     @comments = Comment.where(:image_date_id => params[:id])
     @user = User.all
   end
@@ -19,6 +20,7 @@ class ImageDatesController < ApplicationController
     @comments.add_or_update_evaluation(:comm_rep, value, current_user)
     redirect_to :back, notice: "Thank you for voting"
   end
+
   def vote
     value = params[:type] == "up" ? 1 : 0
     @image_date = ImageDate.find(params[:id])
@@ -35,6 +37,7 @@ class ImageDatesController < ApplicationController
   def edit
     @image_dates_id = ImageDate.where(:id => params[:id])
     @image_dates_id.each do |f|
+      @date = f.date
       @user_id = f.user_id
     end
   end
