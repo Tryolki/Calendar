@@ -36,9 +36,19 @@
       <%= f.text_field :city, autofocus: true, class: 'city', data: {autocomplete_source:
         City.order(:name).map(&:name)} %></div>
 
-
+    <br/>
+    <%= f.fields_for :socnets do |builder| %>
+        <fieldset>
+          <%= builder.label :network, 'Social'%><br/>
+          <%= builder.text_area :network%><br/>
+          <%= builder.label :_destroy, 'Удалить'%>
+          <%= builder.check_box :_destroy%>
+        </fieldset>
+    <% end %>
+<br/>
   <div><%= f.submit "Update" %></div>
 <% end %>
+
 
 <h3>Удалить аккаунт</h3>
 

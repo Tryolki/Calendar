@@ -7,6 +7,6 @@ h1
           - @image_date_gallery.each do |image_date|
             li
               = link_to(image_date) do
-                = image_tag(image_date.image, :height =>150, :width => 150)
+                = image_tag(image_date.image_url(:thumb))
 - if (@ch_id == current_user.id.to_s)
     button#new_img.btn.btn-lg.btn-primary.btn-block onclick="new_image('#{@date}')" Загрузить изображение

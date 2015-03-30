@@ -1,7 +1,7 @@
 <h1>Случайное изображение на <%=  @date %></h1>
 <div class="img_in_main_page">
   <% @img.each do |img| %>
-      <%= image_tag(img.image , :heigth => 300, :width => 300) %>
+      <%= image_tag(img.image_url(:thumb)) %>
   <%end%>
 </div>
 <h1>Все пользователи ресурса</h1>

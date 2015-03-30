@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'hash_tag_pages/show'
 
+  resource :socnets
 resources :image_dates do
   member {post :comment_vote}
   member {post :vote,:comment_vote}
@@ -10,6 +12,7 @@ end
 
 resource :user_profile, only: [:show] do
   resource :calendar, only: :show
+  resources :hash_tag_pages, only: :show
 end
 
 

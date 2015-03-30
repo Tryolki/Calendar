@@ -5,4 +5,5 @@ class ImageDate < ActiveRecord::Base
 
   has_reputation :votes, source: :user, aggregated_by: :sum
 
+  validates :date, presence: true
 end
