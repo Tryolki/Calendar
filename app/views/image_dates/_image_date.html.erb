@@ -68,9 +68,9 @@
                 </div>
                 <div class="action">
 
-                  <%= link_to 'Удалить комментарий ', [comment.image_date, comment],
-                              method: :delete,remote: true,
-                              data: { confirm: 'Вы уверены' } if current_user.id == comment.user_id %>
+                  <%= link_to 'Удалить комментарий ', [comm.comment, comm],
+                              method: :delete,
+                              data: { confirm: 'Вы уверены' } if current_user.id == comm.user_id %>
                 </div>
 
                     </div>
@@ -95,6 +95,9 @@
           <div class="form-group">
             <%= f.text_field :user_name, :value => current_user.name, :readOnly => true, :class=>"form-control"%>
             <%= f.text_field :content,:id => 'you_comment', :class=>'form-control', :placeholder => "Ответь" %>
+            <div style="display: none">
+            <%= f.text_field :user_id, :value => current_user.id %>
+            </div>
           </div>
           <div class="form-group">
             <%= f.submit :value => "Ответить", :class=>"btn btn-default" %>

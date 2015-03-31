@@ -10,17 +10,17 @@ class CommentOfCommentsController < ApplicationController
   end
 
   def destroy
-    @image_date = ImageDate.find(params[:image_date_id])
-    @comment = @image_date.comment.find(params[:id])
-    @comment.destroy
+    @comment = Comment.find(params[:comment_id])
+    @comment_of_comment = @comment.comment_of_comments.find(params[:id])
+    @comment_of_comment.destroy
     respond_to do |format|
-      format.html {redirect_to image_date_path(@image_date)}
+      format.html {redirect_to image_date_path(@comment.image_date_id)}
       format.js
     end
 
   end
   private
   def comment_params
-    params.require(:comment_of_comment).permit(:content, :user_name, :comment_id)
+    params.require(:comment_of_comment).permit(:content, :user_name, :comment_id,:user_id)
   end
 end
