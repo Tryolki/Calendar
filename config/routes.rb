@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
   get 'hash_tag_pages/show'
-
+  #Плохое решение!
+  resources :comments do
+    resources :comment_of_comments
+  end
+  #
   resource :socnets
 resources :image_dates do
   member {post :comment_vote}

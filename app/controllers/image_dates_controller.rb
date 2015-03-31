@@ -9,6 +9,7 @@ class ImageDatesController < ApplicationController
 
 
   def show
+    @comment_of_comments = CommentOfComment.all
     @hash_tag = Tag.all
     @comments = Comment.where(:image_date_id => params[:id])
     @user = User.all

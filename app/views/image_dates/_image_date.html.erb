@@ -1,49 +1,106 @@
-<% @comments.each do |comments| %>
-    <form form accept-charset="UTF-8" class="form-inline" data-remote="true" id="comment_<%= comments.id %>" method="post"><div style="display:none"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+<% @comments.each do |comment| %>
+    <form form accept-charset="UTF-8" class="form-inline" data-remote="true" id="comment_<%= comment.id %>" method="post"><div style="display:none"><input name="utf8" type="hidden" value="&#x2713;" /></div>
     <div class="panel-body">
       <ul class="list-group">
         <li class="list-group-item">
           <div class="row">
             <div class="col-xs-2 col-md-1">
               <% @user.each do |user| %>
-                  <% if user.id.to_s == comments.user_id.to_s %>
+                  <% if user.id.to_s == comment.user_id.to_s %>
                       <img src='<%= user.image%>' class="img-circle img-responsive" alt="" /></div>
                   <% end %>
               <% end %>
               <div class="col-xs-10 col-md-11">
                 <div>
-                  <h4><%=comments.comment%></h4>
+                  <h4><%=comment.comment%></h4>
                   <div class="mic-info">
-                    Кем: <a href="<%=profile_path(comments.user_id) %>"><%=comments.user_name %></a><br>Добавленно:<%=comments.created_at %>
+                    Кем: <a href="<%=profile_path(comment.user_id) %>"><%=comment.user_name %></a><br>Добавленно:<%=comment.created_at %>
                   </div>
                 </div>
                 <div class="action">
 
-                  <%= link_to 'Удалить комментарий ', [comments.image_date, comments],
+                  <%= link_to 'Удалить комментарий ', [comment.image_date, comment],
                               method: :delete,remote: true,
-                              data: { confirm: 'Вы уверены' } if current_user.id == comments.user_id %>
+                              data: { confirm: 'Вы уверены' } if current_user.id == comment.user_id %>
                 </div>
-                <% unless comments.user_id == current_user.id%>
-                <a href="#comment" name="<%=comments.user_name %>">Ответить <%=comments.user_name %></a>
+                <% unless comment.user_id == current_user.id%>
+                <a href="#comment" name="<%=comment.user_name %>">Ответить <%=comment.user_name %></a>
                    <% end %>
                     </div>
               <% @hash_tag.each do |tag| %>
-                <% if tag.comment_id == comments.id %>
+                <% if tag.comment_id == comment.id %>
                   <%= link_to tag.name, user_profile_hash_tag_page_path(tag.name) %>
                 <% end %>
             <% end %>
               <br>
-              Рейтинг комментария( <%= comments.reputation_for(:comm_rep).to_i%> )
+              Рейтинг комментария( <%= comment.reputation_for(:comm_rep).to_i%> )
 
-              <% if comments.user_id != current_user.id %>
+              <% if comment.user_id != current_user.id %>
 
-                  <%=link_to "+",comment_vote_image_date_path(comments.id, type: "up"),method: :post %>
-                  |  <%=link_to "-",comment_vote_image_date_path(comments.id, type: "down"),method: :post %>
+                  <%=link_to "+",comment_vote_image_date_path(comment.id, type: "up"),method: :post %>
+                  |  <%=link_to "-",comment_vote_image_date_path(comment.id, type: "down"),method: :post %>
 
               <% end %>
               </div>
+
         </li>
+
+        <h2>Ответы:</h2>
+        <div class = "comment_of_comment">
+
+        <% @comment_of_comments.each do |comm| %>
+            <% if comm.comment_id == comment.id%>
+                <ul class="list-group-item-text">
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-xs-2 col-md-1">
+              <% @user.each do |user| %>
+                  <% if user.id.to_s == comment.user_id.to_s %>
+                      <img src='<%= user.image%>' class="img-circle img-responsive" alt="" /></div>
+                  <% end %>
+              <% end %>
+              <div class="col-xs-10 col-md-11">
+                <div>
+                  <h4><%=comm.content%></h4>
+                  <div class="mic-info">
+                    Кем: <%=comm.user_name %></a><br>Добавленно:<%=comm.created_at %>
+                  </div>
+                </div>
+                <div class="action">
+
+                  <%= link_to 'Удалить комментарий ', [comment.image_date, comment],
+                              method: :delete,remote: true,
+                              data: { confirm: 'Вы уверены' } if current_user.id == comment.user_id %>
+                </div>
+
+                    </div>
+              <br>
+
+              </div>
+
+        </li>
+            </ul>
+      <% end %>
+        <% end %>
+        </div>
+
       </ul>
+
     </div>
     </form>
+<% unless comment.user_id == current_user.id%>
+
+    <div class="actionBox" id = "comments">
+      <%= form_for([comment, comment.comment_of_comments.build],  :html => {:class =>"form-inline"} ) do |f| %>
+          <div class="form-group">
+            <%= f.text_field :user_name, :value => current_user.name, :readOnly => true, :class=>"form-control"%>
+            <%= f.text_field :content,:id => 'you_comment', :class=>'form-control', :placeholder => "Ответь" %>
+          </div>
+          <div class="form-group">
+            <%= f.submit :value => "Ответить", :class=>"btn btn-default" %>
+          </div>
+      <%end%>
+    <% end %>
+<hr>
+    </div>
 <% end %>

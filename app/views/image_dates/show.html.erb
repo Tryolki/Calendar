@@ -39,13 +39,12 @@
             <%= f.text_field :user_name, :value => current_user.name, :readOnly => true, :class=>"form-control"%>
             <%= f.text_field :comment,:id => 'you_comment', :class=>'form-control', :placeholder => "Ваш комментарий" %>
             <%= f.text_field :hsh,:id => 'you_hash', :class=>'form-control', :placeholder => "Add hashtags" %>
-
-          </div>
-          <div class="form-group">
-            <%= f.submit :value => "Добавить комментарий", :class=>"btn btn-default" %>
           </div>
           <div style="display: none">
             <%= f.text_field :user_id, :value => current_user.id %>
+          </div>
+          <div class="form-group">
+            <%= f.submit :value => "Добавить комментарий", :class=>"btn btn-default" %>
           </div>
       <%end%>
 

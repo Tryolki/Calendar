@@ -93,6 +93,17 @@ h1:after {
   vertical-align: middle;
   background: #f0f0f0;
 }
+hr{
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #EEEEEE -moz-use-text-color #FFFFFF;
+    border-style: solid none;
+    border-width: 1px 0;
+    margin: 18px 0;
+}
 h1:before {    
   left: -.5em;
   margin: 0 0 0 -50%;
@@ -200,3 +211,5 @@ html[xmlns] .clearfix { display: block; }
 .slider .nav span.on {
     background: #2e9419;
 }
+
+
