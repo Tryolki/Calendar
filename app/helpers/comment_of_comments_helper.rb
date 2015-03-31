@@ -1,0 +1,2 @@
+module CommentOfCommentsHelper
+end
